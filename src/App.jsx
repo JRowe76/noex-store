@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import StrengthForRunners2x from "./StrengthForRunners2x";
 import Store from "./Store";
 import BodyweightBurner from "./BodyweightBurner";
 import AbsProgram from "./Abs";
@@ -30,8 +31,7 @@ export default function App() {
       ← Store
     </button>
   );
-
-  if (page === "bodyweight-burner") return <><BodyweightBurner /><BackButton /></>;
+if (page === "strength-for-runners-2x") return <><StrengthForRunners2x /><BackButton /></>;  if (page === "bodyweight-burner") return <><BodyweightBurner /><BackButton /></>;
   if (page === "abs") return <><AbsProgram /><BackButton /></>;
   if (page === "arm-blast") return <><ArmBlast /><BackButton /></>;
   if (page === "strength-for-runners") return <><StrengthForRunners /><BackButton /></>;
