@@ -31,7 +31,8 @@ export default function App() {
       ← Store
     </button>
   );
-if (page === "strength-for-runners-2x") return <><StrengthForRunners2x /><BackButton /></>;  if (page === "bodyweight-burner") return <><BodyweightBurner /><BackButton /></>;
+if (page === "strength-for-runners-2x") return <><StrengthForRunners2x /><BackButton /></>;
+if (page === "bodyweight-burner") return <><BodyweightBurner /><BackButton /></>;
   if (page === "abs") return <><AbsProgram /><BackButton /></>;
   if (page === "arm-blast") return <><ArmBlast /><BackButton /></>;
   if (page === "strength-for-runners") return <><StrengthForRunners /><BackButton /></>;
