@@ -10,6 +10,7 @@ const products = [
     description: "A 10–20 min add-on for the end of any session. No equipment needed — just focused bodyweight work that builds real functional strength on top of what you're already doing.",
     badge: null,
     sessions: 8,
+    squareLink: "https://square.link/u/ZJAxVUOc",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const products = [
     description: "A standalone 10–20 minute workout you can run any time — on top of your current program. Progressive core work that goes far beyond basic movements to build real, lasting strength.",
     badge: "Popular",
     sessions: 24,
+    squareLink: "https://square.link/u/8IKulBpt",
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const products = [
     description: "A focused add-on for your upper body. 10–20 minutes at the end of your session targeting arms and shoulders with intention — minimal equipment, maximum focus.",
     badge: null,
     sessions: 12,
+    squareLink: "https://square.link/u/hejlYxbR",
   },
   {
     id: 4,
@@ -38,9 +41,10 @@ const products = [
     frequency: "2x / Week",
     price: 99,
     description: "A dedicated 10–20 minute strength session built exclusively for runners — added on top of your existing training. Keeps your body durable, balanced, and performing at its best.",
-    upsell: { text: "Add a 3rd weekly session focused on explosive power — box jumps, bounding, reactive training — for stronger, faster legs.", price: 109 },
+    upsell: { text: "Add a 3rd weekly session focused on explosive power — box jumps, bounding, reactive training — for stronger, faster legs.", price: 109, squareLink: "https://square.link/u/TMEdfQN4" },
     badge: "Best Value",
     sessions: 16,
+    squareLink: "https://square.link/u/S02RRpbz",
   },
   {
     id: 5,
@@ -51,6 +55,7 @@ const products = [
     description: "10–20 minutes to start your morning or wind down your evening. A daily stretching practice that keeps your body loose, recovered, and ready — completely on its own or after any session.",
     badge: null,
     sessions: 40,
+    squareLink: "https://square.link/u/hV6q8Xp2",
   },
 ];
 
@@ -400,7 +405,22 @@ export default function Store() {
               <span style={{ fontSize: 12, color: "#555", letterSpacing: 1, textTransform: "uppercase" }}>Total</span>
               <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 22, fontWeight: 800, color: "#111" }}>${cartTotal}</span>
             </div>
-            <button className="checkout-btn">Checkout</button>
+            {cart.length === 1 ? (
+              <a href={cart[0].squareLink} target="_blank" rel="noopener noreferrer" style={{ display: "block", textDecoration: "none" }}>
+                <button className="checkout-btn">Checkout</button>
+              </a>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <div style={{ fontSize: 11, color: "#888", textAlign: "center", marginBottom: 4 }}>Complete each purchase separately:</div>
+                {cart.map(item => (
+                  <a key={item.id} href={item.squareLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                    <button className="checkout-btn" style={{ fontSize: 11, padding: "12px" }}>
+                      Buy {item.name} — ${item.price}
+                    </button>
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
