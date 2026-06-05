@@ -16,7 +16,7 @@ export default function App() {
     const onHash = () => setPage(window.location.hash.replace("#", "") || "store");
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
-  }, []);
+  }, []); 
 
   const navigate = (p) => {
     window.location.hash = p;
